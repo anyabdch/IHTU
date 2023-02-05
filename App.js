@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
-
-const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'};
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Test
-export default function App(){
+function HomeScreen(){
   const [count, setCount] = useState(0);
   return(
     <SafeAreaView style={{ flex: 1 }}>
@@ -13,13 +13,13 @@ export default function App(){
         <TouchableOpacity
           style={styles.buttonFacebookStyle}
           activeOpacity={0.5}>
-          <Image
+          {<Image
             source={{
               uri:
                 '/images/north-america-map.png',
             }}
             style={styles.buttonImageIconStyle}
-          />
+          />}
           <View styles={styles.buttonIconSeparatorStyle}/>
           <Text styles={styles.buttonTextStyle}>
             Learn more about NA
@@ -39,6 +39,18 @@ export default function App(){
     </SafeAreaView>
   )
 };
+
+const Stack = createNativeStackNavigator();
+
+export default function App(){
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
