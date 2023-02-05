@@ -4,6 +4,7 @@ import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, To
 
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'};
 
+// Test
 export default function App(){
   const [count, setCount] = useState(0);
   return(
@@ -12,7 +13,6 @@ export default function App(){
         <TouchableOpacity
           style={styles.buttonFacebookStyle}
           activeOpacity={0.5}>
-            
           <Image
             source={{
               uri:
