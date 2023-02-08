@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View} from 'react-native';
+import { unlockAllOrientations } from 'react-native-orientation';
+import Orientation from 'react-native-orientation';
 
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'};
 
 export default function App(){
   const [count, setCount] = useState(0);
+  Orientation.unlockAllOrientations;
+  Orientation.lockToLandscape;
   return(
     <View style={styles.container}>        
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
