@@ -10,8 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
 
 //Screen One
-const ScreenOne = props => {
-  const [count, setCount] = useState(0);
+const MapScreen = props => {
   Orientation.unlockAllOrientations;
   Orientation.lockToLandscape;
 
@@ -25,12 +24,6 @@ const ScreenOne = props => {
         {/* Background image */}
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
           <StatusBar style='auto' />
-          <Text style={styles.text}>Hi IHTU!</Text>
-          <Text style={styles.count}>You clicked {count} times</Text>
-          <Button
-            onPress={() => setCount(count + 1)}
-            title="Click me!"
-          />
           <Button
             onPress={() => props.navigation.navigate('ScreenTwo')}
             title="Next page"
@@ -49,18 +42,20 @@ const ScreenTwo = () => {
   );
 };
 
+// Stack for different screens
 const Stack = createNativeStackNavigator();
 export default function App(){
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="ScreenOne" component={ScreenOne} />
+        <Stack.Screen name="MapScreen" component={MapScreen} />
         <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
