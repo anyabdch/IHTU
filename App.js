@@ -7,49 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Test
-
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
-
-function HomeScreen(){
-  const [count, setCount] = useState(0);
-  Orientation.unlockAllOrientations;
-  Orientation.lockToLandscape;
-
-  // //onPress To Navigate
-  // const onPress = () => {
-  //   props.navigation.navigate('ScreenTwo');
-  // };
-
-  return(
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>        
-        <TouchableOpacity
-          style={styles.buttonFacebookStyle}
-          activeOpacity={0.5}>
-          <Image
-            source={image}
-            style={styles.buttonImageIconStyle}
-          />
-          <View styles={styles.buttonIconSeparatorStyle}/>
-          <Text styles={styles.buttonTextStyle}>
-            Learn more about NA
-          </Text>
-        </TouchableOpacity>
-
-        {/* Background image */}
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-          <StatusBar style='auto' />
-          <Text style={styles.text}>Hi IHTU!</Text>
-          <Text style={styles.count}>You clicked {count} times</Text>
-          <Button
-            onPress={() => setCount(count + 1)}
-            title="Click me!"
-          />
-        </ImageBackground>
-      </View>
-    </SafeAreaView>
-  )
-};
 
 //Screen One
 const ScreenOne = props => {
@@ -64,19 +22,6 @@ const ScreenOne = props => {
 
   return (
       <View style={styles.container}>        
-        {/* <TouchableOpacity
-          style={styles.buttonFacebookStyle}
-          activeOpacity={0.5}>
-          <Image
-            source={image}
-            style={styles.buttonImageIconStyle}
-          />
-          <View styles={styles.buttonIconSeparatorStyle}/>
-          <Text styles={styles.buttonTextStyle}>
-            Learn more about NA
-          </Text>
-        </TouchableOpacity> */}
-
         {/* Background image */}
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
           <StatusBar style='auto' />
@@ -92,11 +37,6 @@ const ScreenOne = props => {
           />
         </ImageBackground>
       </View>
-    // <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-    //   <TouchableOpacity onPress={onPress}>
-    //     <Text>Hello From Screen One</Text>
-    //   </TouchableOpacity>
-    // </View>
   );
 };
 
@@ -110,15 +50,12 @@ const ScreenTwo = () => {
 };
 
 const Stack = createNativeStackNavigator();
-
 export default function App(){
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="ScreenOne" component={ScreenOne} />
         <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
-        <Stack.Screen name="home" component={HomeScreen} />
-
       </Stack.Navigator>
     </NavigationContainer>
   )
