@@ -36,6 +36,22 @@ const ScreenTwo = props => {
         onPress={() => props.navigation.goBack()}
         title="Back"
       />
+      <Button
+        onPress={() => props.navigation.navigate('DragDrop1')}
+        title="Go to Drag and Drop Game"
+      />
+    </View>
+  );
+};
+
+const DragDrop1 = props => {
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Drag and Drop Game Page</Text>
+      <Button
+        onPress={() => props.navigation.goBack()}
+        title="Back"
+      />
     </View>
   );
 };
@@ -47,6 +63,7 @@ export default function App(){
       <Stack.Navigator initialRouteName='Map' screenOptions={{headerShown: false}}>
         <Stack.Screen name="Map" component={MapScreen} />
         <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
+        <Stack.Screen name="DragDrop1" component={DragDrop1} />
       </Stack.Navigator>
     </NavigationContainer>
   )
