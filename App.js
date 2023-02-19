@@ -19,19 +19,25 @@ const MapScreen = props => {
     props.navigation.navigate('ScreenTwo');
   };
 
+
+
+
   return (
       <View style={styles.container}>        
         {/* Background image */}
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+        </ImageBackground>
           <StatusBar style='auto' />
-          <Button
+          <View style={{borderWidth:1,position:'absolute',bottom:0, alignSelf:'flex-end'}}>
+            <Button
+            backgroundColor='red'
             onPress={() => props.navigation.navigate('ScreenTwo')}
             title="Next page"
           />
-        </ImageBackground>
+          </View>
       </View>
   );
-};
+  };
 
 //Screen Two
 const ScreenTwo = () => {
@@ -80,4 +86,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#000000c0',
   },
+  button: {
+    backgroundColor: 'red',
+    height: 50,
+    width: 100,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  }
 });
