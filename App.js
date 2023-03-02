@@ -28,7 +28,7 @@ const MapScreen = props => {
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         </ImageBackground>
           <StatusBar style='auto' />
-          <View style={{borderWidth:1,position:'absolute',bottom:0, alignSelf:'flex-end'}}>
+          <View style={{borderWidth:1,position:'absolute',top:0,left:0, alignSelf:'flex-end'}}>
             <Button
             backgroundColor='red'
             onPress={() => props.navigation.navigate('ScreenTwo')}
