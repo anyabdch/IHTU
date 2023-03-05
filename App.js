@@ -12,30 +12,34 @@ const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
 const MapScreen = props => {
   Orientation.unlockAllOrientations;
   Orientation.lockToLandscape;
-
   return (
       <View style={styles.container}>        
         {/* Background image */}
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-          <StatusBar style='auto' />
-          <Button
-            onPress={() => props.navigation.navigate('ScreenTwo')}
-            title="Next page"
-          />
         </ImageBackground>
+          <StatusBar style='auto' />
+          <View style={{borderWidth:1,position:'absolute',top:0,left:0, alignSelf:'flex-end'}}>
+            <Button
+            backgroundColor='red'
+            onPress={() => props.navigation.navigate('ScreenTwo')}
+            title="Menu"
+          />
+          </View>
       </View>
   );
-};
+  };
 
 //Screen Two
 const ScreenTwo = props => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Screen Two</Text>
-      <Button
-        onPress={() => props.navigation.goBack()}
-        title="Back"
-      />
+      <View style={{borderWidth:1,position:'absolute',top:0,left:0, alignSelf:'flex-end'}}>
+        <Button
+          onPress={() => props.navigation.goBack()}
+          title="Back"
+        />
+      </View>
     </View>
   );
 };
@@ -76,4 +80,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#000000c0',
   },
+  button: {
+    backgroundColor: 'red',
+    height: 50,
+    width: 100,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  }
 });
