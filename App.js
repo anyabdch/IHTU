@@ -1,5 +1,4 @@
 import { StatusBar } from 'expo-status-bar';
-import { unlockAllOrientations } from 'react-native-orientation';
 import Orientation from 'react-native-orientation';
 import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
@@ -13,15 +12,6 @@ const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
 const MapScreen = props => {
   Orientation.unlockAllOrientations;
   Orientation.lockToLandscape;
-
-  //onPress To Navigate
-  const onPress = () => {
-    props.navigation.navigate('ScreenTwo');
-  };
-
-
-
-
   return (
       <View style={styles.container}>        
         {/* Background image */}
@@ -32,7 +22,7 @@ const MapScreen = props => {
             <Button
             backgroundColor='red'
             onPress={() => props.navigation.navigate('ScreenTwo')}
-            title="Next page"
+            title="Menu"
           />
           </View>
       </View>
@@ -40,28 +30,32 @@ const MapScreen = props => {
   };
 
 //Screen Two
-const ScreenTwo = () => {
+const ScreenTwo = props => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Screen Two</Text>
+      <View style={{borderWidth:1,position:'absolute',top:0,left:0, alignSelf:'flex-end'}}>
+        <Button
+          onPress={() => props.navigation.goBack()}
+          title="Back"
+        />
+      </View>
     </View>
   );
 };
 
-// Stack for different screens
 const Stack = createNativeStackNavigator();
 export default function App(){
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="MapScreen" component={MapScreen} />
+      <Stack.Navigator initialRouteName='Map' screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Map" component={MapScreen} />
         <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
-// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
