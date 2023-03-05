@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { DraxProvider, DraxView, DraxList } from 'react-native-drax';
 
 // Test
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
@@ -53,6 +55,7 @@ const DragDrop1 = props => {
         title="Back"
       />
     </View>
+    
   );
 };
 
