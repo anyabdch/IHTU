@@ -9,6 +9,7 @@ import { DraxProvider, DraxView, DraxList } from 'react-native-drax';
 
 // Test
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
+const Icon = {uri: 'https://img.freepik.com/free-vector/sticker-empty-box-opened-white-background_1308-68243.jpg?w=2000'}
 
 //Screen One
 const MapScreen = props => {
@@ -47,15 +48,40 @@ const ScreenTwo = props => {
 };
 
 const DragDrop1 = props => {
+  const setpos = 0;
+  const [moving, setMoving] = useState(false);
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Drag and Drop Game Page</Text>
-      <Button
-        onPress={() => props.navigation.goBack()}
-        title="Back"
-      />
-    </View>
-    
+    <DraxProvider>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text>Drag and Drop Game Page</Text>
+            <Button
+              onPress={() => props.navigation.goBack()}
+              title="Back"
+            />
+      </View>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <DraxView
+							style={[styles.image]}
+							draggingStyle={styles.dragging}
+							dragPayload={{ setpos }}
+							onDragStart={() => {
+								setMoving(true);
+							}}
+							onDragEnd={() => {
+								setMoving(false);
+							}}
+							onDragDrop={() => {
+								setMoving(false);
+							}}
+						>
+							<Icon
+								name="thing"
+								size={1}
+								color="black"
+							/>
+						</DraxView>
+      </View>
+    </DraxProvider>
   );
 };
 
@@ -96,4 +122,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#000000c0',
   },
+  dragging: {
+		opacity: 0.2,
+	},
 });
