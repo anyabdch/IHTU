@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {SelectDropDown} from 'react-native-select-dropdown';
+import {DropDownPicker} from 'react-native-select-dropdown';
 
 
 const image = './images/map.jpg'
@@ -35,12 +35,39 @@ const MapScreen = props => {
           />
         </ImageBackground>
         <View>
-          <SelectDropDown
+          <SelectDropdown
+            data={Pages}
+            onSelect={(selectedItem, index) => {
+              console.log(selectedItem, index)
+            }}
+            buttonTextAfterSelection={(selectedItem, index) => {
+              return selectedItem
+            }}
+            rowTextForSelection={(item, index) => {
+              
+              return item
+            }}
+          />
+          {/* <DropDownPicker
+            items={Pages}
+            open={isOpen}
+            setOpen={() => setIsOpen(!isOpen)}
+            value={currentValue}
+            setValue={val=>{setCurrentValue(val)}}
+            maxHeight={100}
+
+            placeholder="Menu"
+            placeholderStyle={{color:'blue', fontWeight: 'bold', fontSize =16}}
+
+            showTickIcon={true} */}
+
+          />
+          {/* <DropDownSelect
               data ={Pages}
               onSelect={(selectedItem, index) => {
                 console.log(selectedItem, index);
               }}
-              defaultButtonText={'Select page'}
+              defaultButtonText={'Menu'}
               buttonTextAfterSelection={(selectedItem, index) => {
                 return selectedItem;
               }}
@@ -56,7 +83,7 @@ const MapScreen = props => {
               dropdownStyle={styles.dropdown1DropdownStyle}
               rowStyle={styles.dropdown1RowStyle}
             />
-            </View>
+            </View> */}
       </View>
   );
 };
