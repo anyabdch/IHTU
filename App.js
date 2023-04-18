@@ -6,6 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AvatarBuilder from './avatar/avatar-builder.js';
 
+// import { Avatar } from "react-native-avataaars";
+
+
 const image = './images/map.jpg'
 
 
@@ -127,8 +130,8 @@ export default function App(){
 const styles = StyleSheet.create({
   avatarContainer: {
     flex: 1,
-    marginTop: 70,
-    paddingHorizontal: 24,
+    // marginTop: 10,
+    // paddingHorizontal: 24,
   },
   avatarBackgroundImage: {
     flex: 1,
