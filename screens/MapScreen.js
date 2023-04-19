@@ -15,12 +15,12 @@ const MapScreen = props => {
           </ImageBackground>
             <StatusBar style='auto' />
             <View style={styles.menuButton}>
-              <Button onPress={() => props.navigation.navigate('ScreenTwo')} title = ''/>
-              <Text style = {styles.menuText} onPress={() => props.navigation.navigate('ScreenTwo')}>Menu</Text>
+              <Button onPress={() => props.navigation.navigate('Menu')} title = ''/>
+              <Text style = {styles.menuText} onPress={() => props.navigation.navigate('Menu')}>Menu</Text>
             </View>
   
             {/* continent buttons */}
-            <View style={styles.continentButton} position={'absolute'} top={315} left={180} >
+            <View style={styles.continentButton} position={'absolute'} top={10} left={10} >
               <TouchableOpacity onPress={() => props.navigation.navigate('NorthAmerica')}>
                 <Text style={styles.continentButtonText}>NORTH AMERICA</Text>
               </TouchableOpacity>
@@ -64,8 +64,10 @@ const styles = StyleSheet.create({
         flex: 1,
       },
       image: {
+        position: 'relative',
         flex: 1,
         justifyContent: 'center',
+        zIndex: 0,
       },
       menuText: {
         alignSelf:'center',
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 10,
         alignSelf:'center',
+        zIndex: 1,
       },
       continentButtonText: {
         shadowColor: 'black',
@@ -106,6 +109,7 @@ const styles = StyleSheet.create({
         fontSize: 19,
         textAlign: 'center',
         top: 6,
+        zIndex: 1,
       }
 });
 

@@ -28,7 +28,7 @@ export default function App(){
           name="Map" 
           component={MapScreen} />
         <Stack.Screen 
-          name="ScreenTwo" 
+          name="Menu" 
           component={Menu} />
         <Stack.Screen 
           name="NorthAmerica" 
@@ -58,5 +58,5 @@ export default function App(){
 
 
 const styles = StyleSheet.create({
-  
+
 });
