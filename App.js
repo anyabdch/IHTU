@@ -48,42 +48,7 @@ const MapScreen = props => {
               return item
             }}
           />
-          {/* <DropDownPicker
-            items={Pages}
-            open={isOpen}
-            setOpen={() => setIsOpen(!isOpen)}
-            value={currentValue}
-            setValue={val=>{setCurrentValue(val)}}
-            maxHeight={100}
-
-            placeholder="Menu"
-            placeholderStyle={{color:'blue', fontWeight: 'bold', fontSize =16}}
-
-            showTickIcon={true} */}
-
-          />
-          {/* <DropDownSelect
-              data ={Pages}
-              onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
-              }}
-              defaultButtonText={'Menu'}
-              buttonTextAfterSelection={(selectedItem, index) => {
-                return selectedItem;
-              }}
-              rowTextForSelection={(item, index) => {
-                return item;
-              }}
-              buttonStyle={styles.dropdown1BtnStyle}
-              buttonTextStyle={styles.dropdown1BtnTxtStyle}
-              renderDropdownIcon={isOpened => {
-                return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#444'} size={18} />;
-              }}
-              dropdownIconPosition={'right'}
-              dropdownStyle={styles.dropdown1DropdownStyle}
-              rowStyle={styles.dropdown1RowStyle}
-            />
-            </View> */}
+      </View>
       </View>
   );
 };
