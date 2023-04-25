@@ -2,25 +2,61 @@ import { StatusBar } from 'expo-status-bar';
 import Orientation from 'react-native-orientation';
 import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
 
-const MapScreen = props => {
-    Orientation.unlockAllOrientations;
-    Orientation.lockToLandscape;
-    return (
-        <View style={styles.container}>        
-          {/* Background image */}
-          <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-          </ImageBackground>
-            <StatusBar style='auto' />
-            <View style={styles.menuButton}>
-              <Button onPress={() => props.navigation.navigate('Menu')} title = ''/>
-              <Text style = {styles.menuText} onPress={() => props.navigation.navigate('Menu')}>Menu</Text>
-            </View>
-  
+const handleMenuSelection = (item) => {
+  switch(item.value) {
+    case 'Menu':
+      props.navigation.navigate('Home');
+      break;
+    case 'Game 1':
+      props.navigation.navigate('Asia');
+      break;
+    case 'Game 2':
+      props.navigation.navigate('Africa');
+      break;
+    default:
+      break;
+  }
+}
+
+
+const MapScreen = (props) => {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: 'Menu', value: 'Menu' },
+    { label: 'Game 1', value: 'Game 1' },
+    { label: 'Game 2', value: 'Game 2' },
+  ]);
+
+  return (
+    <View style={styles.container}>
+      {/* Background image */}
+      <ImageBackground
+        source={image}
+        resizeMode="cover"
+        style={styles.image}
+      ></ImageBackground>
+      <StatusBar style="auto" />
+      <View style={styles.menuButton}>
+        <DropDownPicker
+          defaultValue={'Menu'}
+          open={open}
+          value={value}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
+          onChangeItem={handleMenuSelection}
+        />
+      </View>
+
+
             {/* continent buttons */}
-            <View style={styles.continentButton} position={'absolute'} top={10} left={10} >
+            <View style={styles.continentButton} position={'absolute'} top={150} left={120} >
               <TouchableOpacity onPress={() => props.navigation.navigate('NorthAmerica')}>
                 <Text style={styles.continentButtonText}>NORTH AMERICA</Text>
               </TouchableOpacity>
@@ -78,16 +114,25 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 10,
       },
+      // menuButton: {
+      //   backgroundColor: 'transparent',
+      //   borderWidth:1,
+      //   width: 100,
+      //   height: 50,
+      //   borderRadius: 10,
+      //   alignSelf:'flext-end',
+      //   position: 'absolute',
+      //   top: 0,
+      //   left: 0,
+      // },
       menuButton: {
-        backgroundColor: 'transparent',
-        borderWidth:1,
-        width: 100,
-        height: 50,
-        borderRadius: 10,
-        alignSelf:'flext-end',
+        width: 150,
+        height: 40,
+        alignSelf:'flex-end',
         position: 'absolute',
-        top: 0,
-        left: 0,
+        top: 10,
+        right: 10,
+        zIndex: 1,
       },
     continentButton: {
         backgroundColor: 'transparent',
