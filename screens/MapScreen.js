@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import Orientation from 'react-native-orientation';
 import React, { useState, useEffect } from 'react';
-import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity, Dimensions} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
+const window = Dimensions.get("window");
+const screen = Dimensions.get("screen");
 
 const handleMenuSelection = (item, props) => {
   switch(item.value) {
@@ -32,6 +34,12 @@ const MapScreen = (props) => {
     { label: 'Game 2', value: 'Game 2' },
   ]);
 
+  const [dimensions, setDimensions] = useState({ window, screen });
+
+  const onChange = ({ window, screen }) => {
+    setDimensions({ window, screen });
+  };
+
   return (
     <View style={styles.container}>
       {/* Background image */}
@@ -55,50 +63,48 @@ const MapScreen = (props) => {
           onSelectItem={(item) => {
             console.log(item)
             handleMenuSelection(item, props)}
-          }
-        />
+          }/>
       </View>
 
-
-            {/* continent buttons */}
-            <View style={styles.continentButton} position={'absolute'} top={150} left={120} >
-              <TouchableOpacity onPress={() => props.navigation.navigate('NorthAmerica')}>
-                <Text style={styles.continentButtonText}>NORTH AMERICA</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.continentButton} position={'absolute'} top={500} left={290}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('SouthAmerica')}>
-                <Text style={styles.continentButtonText}>SOUTH AMERICA</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.continentButton} position={'absolute'} top={420} left={500}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Africa')}>
-                <Text style={styles.continentButtonText}>AFRICA</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.continentButton} position={'absolute'} top={300} right={260}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Asia')}>
-                <Text style={styles.continentButtonText}>ASIA</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.continentButton} position={'absolute'} top={315} right={490}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Europe')}>
-                <Text style={styles.continentButtonText}>EUROPE</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.continentButton} position={'absolute'} top={540} right={140}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Australia')}>
-                <Text style={styles.continentButtonText}>AUSTRALIA</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.continentButton} position={'absolute'} top={700} right={500}>
-              <TouchableOpacity onPress={() => props.navigation.navigate('Antarctica')}>
-                <Text style={styles.continentButtonText}>ANTARCTICA</Text>
-              </TouchableOpacity>
-            </View>
+        {/* continent buttons */}
+        <View style={styles.continentButton} position={'absolute'} top={'33%'} left={'13%'} fontSize={14*(dimensions.window.width / 844)} >
+          <TouchableOpacity onPress={() => props.navigation.navigate('NorthAmerica')}>
+            <Text style={styles.continentButtonText}>NORTH AMERICA</Text>
+          </TouchableOpacity>
         </View>
-    );
-    };
+        <View style={styles.continentButton} position={'absolute'} top={'70%'} left={'22%'}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('SouthAmerica')}>
+            <Text style={styles.continentButtonText}>SOUTH AMERICA</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.continentButton} position={'absolute'} top={'50%'} left={'39%'}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Africa')}>
+            <Text style={styles.continentButtonText}>AFRICA</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.continentButton} position={'absolute'} top={'30%'} right={'20%'}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Asia')}>
+            <Text style={styles.continentButtonText}>ASIA</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.continentButton} position={'absolute'} top={'26%'} right={'37%'}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Europe')}>
+            <Text style={styles.continentButtonText}>EUROPE</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.continentButton} position={'absolute'} top={'73%'} right={'9%'}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Australia')}>
+            <Text style={styles.continentButtonText}>AUSTRALIA</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.continentButton} position={'absolute'} top={'90%'} right={'37%'}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Antarctica')}>
+            <Text style={styles.continentButtonText}>ANTARCTICA</Text>
+          </TouchableOpacity>
+        </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -156,7 +162,6 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         color: 'white',
         fontStyle: 'normal',
-        fontSize: 19,
         textAlign: 'center',
         top: 6,
         zIndex: 1,
