@@ -4,7 +4,7 @@ import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, To
 const Game1 = props => {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Africa</Text>
+        <Text>Game1</Text>
         <View style={{borderWidth:1,position:'absolute',top:0,left:0, alignSelf:'flex-end'}}>
           <Button
             onPress={() => props.navigation.goBack()}
