@@ -5,6 +5,9 @@ import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, To
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import Flower from './components/Flower.js';
+import ColorPalette from './components/ColorPalette';
+
 // Test
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
 
@@ -22,6 +25,7 @@ export default function App(){
         <Stack.Screen name="Europe" component={Europe} />
         <Stack.Screen name="Australia" component={Australia} />
         <Stack.Screen name="Antarctica" component={Antarctica} />
+        <Stack.Screen name="ColoringPage" component={ColoringPage} />
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -77,9 +81,14 @@ const MapScreen = props => {
               <Text style={styles.continentButtonText}>ANTARCTICA</Text>
             </TouchableOpacity>
           </View>
+          <View style={styles.continentButton} position={'absolute'} top={300} right={200}>
+            <TouchableOpacity onPress={() => props.navigation.navigate('ColoringPage')}>
+              <Text style={styles.continentButtonText}>COLORING</Text>
+            </TouchableOpacity>
+          </View>
       </View>
   );
-  };
+};
 
 //Screen Two
 const ScreenTwo = props => {
@@ -95,6 +104,46 @@ const ScreenTwo = props => {
     </View>
   );
 };
+
+//coloring
+const ColoringPage = i => {
+  var fillColors = ['white', 'white', 'white', 'white', 'white', 'white', 'white', 'white', 'white']
+  var currentColor = 'blue'
+
+  const onFillColor = (i) => {
+    fillColors[i] = currentColor
+    return
+  }
+
+  // const [color, setColor] = useState('');
+  // const [shade, setShade] = useState('#c58c85');
+  // const [count, setCount] = useState(0);
+
+  // const onColorChange = color => {
+  //   setColor(color);
+  // };
+
+  return (
+    <View className="App">
+      <View className= "flower">
+        <Flower fillColors={fillColors} onFill={onFillColor} />
+        <View style={{borderWidth:1,position:'absolute',top:0,left:0, alignSelf:'flex-end'}}>
+          <Button
+            onPress={() => i.navigation.goBack()}
+            title="Back"
+          />
+        </View>
+        {/* <View style={{borderWidth:1,position:'absolute',top:0,left:100, alignSelf:'flex-end'}}>
+          <Button
+            onPress={() => onFillColor(1)}
+            title="Blue"
+          />
+        </View> */}
+      </View>
+      {/* <ColorPalette currentColor={currentColor} changeColor={setCurrentColor}/> */}
+    </View>
+  )
+}
 
 // North America
 const NorthAmerica = props => {
