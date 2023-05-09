@@ -6,13 +6,13 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
 
-const handleMenuSelection = (item) => {
+const handleMenuSelection = (item, props) => {
   switch(item.value) {
     case 'Menu':
       props.navigation.navigate('Home');
       break;
     case 'Game 1':
-      props.navigation.navigate('Asia');
+      props.navigation.navigate('Game1');
       break;
     case 'Game 2':
       props.navigation.navigate('Africa');
@@ -25,7 +25,7 @@ const handleMenuSelection = (item) => {
 
 const MapScreen = (props) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState();
   const [items, setItems] = useState([
     { label: 'Menu', value: 'Menu' },
     { label: 'Game 1', value: 'Game 1' },
@@ -50,7 +50,12 @@ const MapScreen = (props) => {
           setOpen={setOpen}
           setValue={setValue}
           setItems={setItems}
-          onChangeItem={handleMenuSelection}
+          onOpen={() => console.log('Dropdown opened')}
+          onClose={() => console.log('Dropdown closed')}
+          onSelectItem={(item) => {
+            console.log(item)
+            handleMenuSelection(item, props)}
+          }
         />
       </View>
 
