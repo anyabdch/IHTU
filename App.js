@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Flower from './components/Flower';
+import ColorPalette from './components/ColorPalette';
 import MapScreen from './screens/MapScreen';
 import Menu from './screens/Menu';
 import Africa from './screens/Africa';
