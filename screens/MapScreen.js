@@ -3,6 +3,7 @@ import Orientation from 'react-native-orientation';
 import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity, Dimensions} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import Icon from 'react-native-vector-icons/Octicons';
 
 const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
 const window = Dimensions.get("window");
@@ -13,11 +14,11 @@ const handleMenuSelection = (item, props) => {
     case 'Menu':
       props.navigation.navigate('Home');
       break;
-    case 'Game 1':
-      props.navigation.navigate('Game1');
+    case 'Coloring':
+      props.navigation.navigate('Coloring');
       break;
-    case 'Game 2':
-      props.navigation.navigate('Africa');
+    case 'DnD':
+      props.navigation.navigate('DnD');
       break;
     default:
       break;
@@ -30,8 +31,8 @@ const MapScreen = (props) => {
   const [value, setValue] = useState();
   const [items, setItems] = useState([
     { label: 'Menu', value: 'Menu' },
-    { label: 'Game 1', value: 'Game 1' },
-    { label: 'Game 2', value: 'Game 2' },
+    { label: 'Coloring', value: 'Coloring' },
+    { label: 'Drag and Drop', value: 'DnD' },
   ]);
 
   const [dimensions, setDimensions] = useState({ window, screen });
@@ -49,7 +50,13 @@ const MapScreen = (props) => {
         style={styles.image}
       ></ImageBackground>
       <StatusBar style="auto" />
-      <View style={styles.menuButton}>
+      <View style={{position:'absolute',top:20,left:20, alignSelf:'flex-end'}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.goBack()}>
+            <Icon name="home" size={50} color='#fff' />
+          </TouchableOpacity>
+        </View>
+      {/* <View style={styles.menuButton}>
         <DropDownPicker
           defaultValue={'Menu'}
           open={open}
@@ -64,7 +71,7 @@ const MapScreen = (props) => {
             console.log(item)
             handleMenuSelection(item, props)}
           }/>
-      </View>
+      </View> */}
 
         {/* continent buttons */}
         <View style={styles.continentButton} position={'absolute'} top={'33%'} left={'13%'} fontSize={14*(dimensions.window.width / 844)} >

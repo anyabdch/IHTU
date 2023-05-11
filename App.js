@@ -15,7 +15,9 @@ import Antarctica from './screens/Antarctica';
 import Europe from './screens/Europe';
 import SouthAmerica from './screens/SouthAmerica';
 import NorthAmerica from './screens/NorthAmerica';
-import Game1 from './screens/Game1';
+import ColoringPages from './screens/ColoringPage';
+import DnD from './screens/DnD';
+import HomeScreen from './screens/Home';
 
 
 // Test
@@ -25,7 +27,10 @@ const Stack = createNativeStackNavigator();
 export default function App(){
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Map' screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen} />
         <Stack.Screen 
           name="Map" 
           component={MapScreen} />
@@ -54,8 +59,11 @@ export default function App(){
           name="Antarctica" 
           component={Antarctica} />
         <Stack.Screen 
-          name="Game1" 
-          component={Game1} />
+          name="Coloring" 
+          component={ColoringPages} />
+        <Stack.Screen
+          name="DnD"
+          component={DnD} />
       </Stack.Navigator>
     </NavigationContainer>
   )
