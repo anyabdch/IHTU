@@ -15,9 +15,13 @@ import Antarctica from './screens/Antarctica';
 import Europe from './screens/Europe';
 import SouthAmerica from './screens/SouthAmerica';
 import NorthAmerica from './screens/NorthAmerica';
-import ColoringPages from './screens/ColoringPage';
 import DnD from './screens/DnD';
 import HomeScreen from './screens/Home';
+
+import Flower from './components/Flower.js';
+import ColorPalette from './components/ColorPalette';
+
+import ColoringPage from './screens/ColoringPage';
 
 
 // Test
@@ -58,12 +62,12 @@ export default function App(){
         <Stack.Screen 
           name="Antarctica" 
           component={Antarctica} />
-        <Stack.Screen 
-          name="Coloring" 
-          component={ColoringPages} />
         <Stack.Screen
           name="DnD"
           component={DnD} />
+        <Stack.Screen 
+          name="ColoringPage" 
+          component={ColoringPage} />
       </Stack.Navigator>
     </NavigationContainer>
   )
