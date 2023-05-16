@@ -17,7 +17,7 @@ const handleMenuSelection = (item, props) => {
       props.navigation.navigate('Game1');
       break;
     case 'Game 2':
-      props.navigation.navigate('Africa');
+      props.navigation.navigate('ColoringPage');
       break;
     default:
       break;

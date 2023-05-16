@@ -15,6 +15,11 @@ import SouthAmerica from './screens/SouthAmerica';
 import NorthAmerica from './screens/NorthAmerica';
 import Game1 from './screens/Game1';
 
+import Flower from './components/Flower.js';
+import ColorPalette from './components/ColorPalette';
+
+import ColoringPage from './screens/ColoringPage';
+
 
 // Test
 // const image = {uri: 'https://wallpapercave.com/wp/wp5136232.jpg'}
@@ -54,6 +59,9 @@ export default function App(){
         <Stack.Screen 
           name="Game1" 
           component={Game1} />
+        <Stack.Screen 
+          name="ColoringPage" 
+          component={ColoringPage} />
       </Stack.Navigator>
     </NavigationContainer>
   )
