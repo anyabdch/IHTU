@@ -12,7 +12,7 @@ const screen = Dimensions.get("screen");
 const handleMenuSelection = (item, props) => {
   switch(item.value) {
     case 'Menu':
-      props.navigation.navigate('Home');
+      props.navigation.navigate('Map');
       break;
     case 'Coloring':
       props.navigation.navigate('Coloring');
@@ -58,7 +58,7 @@ const MapScreen = (props) => {
         </View>
       {/* <View style={styles.menuButton}>
         <DropDownPicker
-          defaultValue={'Menu'}
+          defaultValue={'Map'}
           open={open}
           value={value}
           items={items}
