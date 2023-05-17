@@ -11,7 +11,7 @@ const screen = Dimensions.get("screen");
 const handleMenuSelection = (item, props) => {
   switch(item.value) {
     case 'Menu':
-      props.navigation.navigate('Home');
+      props.navigation.navigate('Map');
       break;
     case 'Game 1':
       props.navigation.navigate('Game1');
@@ -29,7 +29,7 @@ const MapScreen = (props) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState();
   const [items, setItems] = useState([
-    { label: 'Menu', value: 'Menu' },
+    { label: 'Homescreen', value: 'Menu' },
     { label: 'Game 1', value: 'Game 1' },
     { label: 'Game 2', value: 'Game 2' },
   ]);
@@ -51,7 +51,7 @@ const MapScreen = (props) => {
       <StatusBar style="auto" />
       <View style={styles.menuButton}>
         <DropDownPicker
-          defaultValue={'Menu'}
+          defaultValue={'Map'}
           open={open}
           value={value}
           items={items}
