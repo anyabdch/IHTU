@@ -8,7 +8,7 @@ export default function ColorPalette(props) {
     return(
         <View className="color-palette">
             {colors.map(color => { 
-                const activeClass = props.currentColor === color ? "color-swatch-active" : "";
+                const activeClass = props.currentColor === color ? 'color-swatch-active' : '';
                 return (
                     <View onClick={() => {props.changeColor(color)}}>
                         <View className={`color-swatch ${activeClass}`}  style={{backgroundColor: color}}></View>

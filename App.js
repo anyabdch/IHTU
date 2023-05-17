@@ -4,8 +4,6 @@ import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Flower from './components/Flower';
-import ColorPalette from './components/ColorPalette';
 import MapScreen from './screens/MapScreen';
 import Menu from './screens/Menu';
 import Africa from './screens/Africa';
@@ -15,7 +13,11 @@ import Antarctica from './screens/Antarctica';
 import Europe from './screens/Europe';
 import SouthAmerica from './screens/SouthAmerica';
 import NorthAmerica from './screens/NorthAmerica';
-import Game1 from './screens/Game1';
+import DnD from './screens/DnD';
+import HomeScreen from './screens/Home';
+import Flower from './components/Flower.js';
+import ColorPalette from './components/ColorPalette';
+import ColoringPage from './screens/ColoringPage';
 
 
 // Test
@@ -25,7 +27,10 @@ const Stack = createNativeStackNavigator();
 export default function App(){
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Map' screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen} />
         <Stack.Screen 
           name="Map" 
           component={MapScreen} />
@@ -53,9 +58,12 @@ export default function App(){
         <Stack.Screen 
           name="Antarctica" 
           component={Antarctica} />
+        <Stack.Screen
+          name="DnD"
+          component={DnD} />
         <Stack.Screen 
-          name="Game1" 
-          component={Game1} />
+          name="Coloring" 
+          component={ColoringPage} />
       </Stack.Navigator>
     </NavigationContainer>
   )
