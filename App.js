@@ -4,8 +4,6 @@ import React, { useState, useEffect } from 'react';
 import {ImageBackground, StyleSheet, Text, Button, View, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Flower from './components/Flower';
-import ColorPalette from './components/ColorPalette';
 import MapScreen from './screens/MapScreen';
 import Menu from './screens/Menu';
 import Africa from './screens/Africa';
@@ -17,10 +15,8 @@ import SouthAmerica from './screens/SouthAmerica';
 import NorthAmerica from './screens/NorthAmerica';
 import DnD from './screens/DnD';
 import HomeScreen from './screens/Home';
-
 import Flower from './components/Flower.js';
 import ColorPalette from './components/ColorPalette';
-
 import ColoringPage from './screens/ColoringPage';
 
 
@@ -66,7 +62,7 @@ export default function App(){
           name="DnD"
           component={DnD} />
         <Stack.Screen 
-          name="ColoringPage" 
+          name="Coloring" 
           component={ColoringPage} />
       </Stack.Navigator>
     </NavigationContainer>
